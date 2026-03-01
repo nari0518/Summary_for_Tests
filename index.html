@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <!-- KaTeX CSS for math rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-    <!-- markdown-it and markdown-it-katex -->
+    <!-- markdown-it for Markdown parsing -->
     <script src="https://cdn.jsdelivr.net/npm/markdown-it@13/dist/markdown-it.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/markdown-it-katex@3/dist/markdown-it-katex.min.js"></script>
     <!-- KaTeX for math rendering -->
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
     <style>
         body {
             max-width: 900px;
@@ -53,8 +53,8 @@
 
 <script>
 window.addEventListener('load', function() {
-    // Initialize markdown-it with katex plugin
-    const md = window.markdownit().use(window.markdownitKatex);
+    // Initialize markdown-it
+    const md = window.markdownit({html: true, linkify: true, breaks: true});
     
     fetch('readme.md')
         .then(response => {
@@ -64,6 +64,15 @@ window.addEventListener('load', function() {
         .then(markdown => {
             const html = md.render(markdown);
             document.getElementById('content').innerHTML = html;
+            // Render math with KaTeX auto-render
+            if (window.renderMathInElement) {
+                renderMathInElement(document.getElementById('content'), {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false}
+                    ]
+                });
+            }
         })
         .catch(error => {
             document.getElementById('content').innerHTML = '<p style="color:red;">エラー: ' + error.message + '</p>';
