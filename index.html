@@ -23,7 +23,7 @@
 <h1>数学まとめプリント</h1>
 <div id="content">Loading…</div>
 <script>
-fetch('README.md')
+fetch('readme.md')
   .then(r => r.text())
   .then(md => {
     document.getElementById('content').innerHTML = marked.parse(md);
