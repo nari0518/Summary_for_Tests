@@ -40,5 +40,12 @@
     "area": "英コミb",
     "test": "5",
     "displayName": "R7_英コミb_学年末"
+  },
+  {
+    "filename": "R7-論表-5.md",
+    "year": "R7",
+    "area": "論表",
+    "test": "5",
+    "displayName": "R7_論表_学年末"
   }
 ]
