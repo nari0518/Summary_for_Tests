@@ -47,5 +47,12 @@
     "area": "論表",
     "test": "5",
     "displayName": "R7_論表_学年末"
+  },
+  {
+    "filename": "R8-英コミ-1.md",
+    "year": "R8",
+    "area": "英コミ",
+    "test": "1",
+    "displayName": "R8_英コミ_1学期中間"
   }
 ]
